@@ -16,7 +16,7 @@ const AI = new GoogleGenerativeAI(process.env.api); //FameerPatil
 
 async function run(prop) {
 
-  const model = AI.getGenerativeModel({ model: process.env.model });
+  const model = AI.getGenerativeModel({ model: "gemini-pro" });
 
   prop = converter(prop);
 
