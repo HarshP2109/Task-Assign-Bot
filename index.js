@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const { oggy } = require(process.env.module);
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 // const { resolve } = require('node:path/win32');
 require('dotenv').config()
 
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/chat.html');
 });
 
-const AI = new oggy(process.env.api); //FameerPatil
+const AI = new GoogleGenerativeAI(process.env.api); //FameerPatil
 
 async function run(prop) {
 
