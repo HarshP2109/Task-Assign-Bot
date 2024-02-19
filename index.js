@@ -70,6 +70,6 @@ function converter(input){
 
 
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+server.listen(process.env.Port, () => {
+  console.log('listening on *:'+process.env.Port);
 });
