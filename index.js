@@ -29,7 +29,7 @@ async function run(prop) {
   if(index  == -1){
     let data = distributer(text);
     text = "task Assigned!";
-    let toID = await findacc(data.to);
+    let toID = await findacc(data.To);
     Task_sender(toID,data.To,data.Task,data.Till);
   }
 
