@@ -29,8 +29,8 @@ async function run(prop) {
   if(index  == -1){
     let data = distributer(text);
     text = "task Assigned!";
-    let toID = await findacc(data.To);
-    Task_sender(toID,data.To,data.Task,data.Till);
+    // let toID = await findacc(data.To);
+    // Task_sender(toID,data.To,data.Task,data.Till);
   }
 
   
@@ -155,60 +155,60 @@ function distributer(lines){
 
 
 //Mongoose
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 // const { Console } = require('console');
-const CCH = mongoose.createConnection(process.env.MongoDBURL);
+// const CCH = mongoose.createConnection(process.env.MongoDBURL);
 
 //Task Assign Bot 
-const Tasks = CCH.model('Tasks', { 
-  FromID: String,   //UniqueId
-  FromName: String,   //Username
-  ToID: String,      //UniqueID
-  ToName: String,    //Username
-  Message: String,     
-  Deadline: String,
-  Status: String
-});
+// const Tasks = CCH.model('Tasks', { 
+//   FromID: String,   //UniqueId
+//   FromName: String,   //Username
+//   ToID: String,      //UniqueID
+//   ToName: String,    //Username
+//   Message: String,     
+//   Deadline: String,
+//   Status: String
+// });
 
-function Task_sender(toID, toName, mess, deadline){
-  let data = new Tasks({
-    FromID: "HP21",   //UniqueId
-    FromName: "ChatBot",   //Username
-    ToID: toID,      //UniqueID
-    ToName: toName,    //Username
-    Message: mess,     
-    Deadline: deadline,
-    Status: "Pending"
-  })
-  data.save().then(() => console.log("Permanents Task created!!!"));
-}
+// function Task_sender(toID, toName, mess, deadline){
+//   let data = new Tasks({
+//     FromID: "HP21",   //UniqueId
+//     FromName: "ChatBot",   //Username
+//     ToID: toID,      //UniqueID
+//     ToName: toName,    //Username
+//     Message: mess,     
+//     Deadline: deadline,
+//     Status: "Pending"
+//   })
+//   data.save().then(() => console.log("Permanents Task created!!!"));
+// }
 
 
-//Account
-const acc_create = CCH.model('Account', { 
-  Firstname: String ,
-  Lastname: String ,
-  Username: String ,
-  Dateofbirth: Date ,
-  Gender: String ,
-  Email: String,
-  Password: String,
-  Gender: String,
-  UniqueId: String,
-  Role: String
-});
+// //Account
+// const acc_create = CCH.model('Account', { 
+//   Firstname: String ,
+//   Lastname: String ,
+//   Username: String ,
+//   Dateofbirth: Date ,
+//   Gender: String ,
+//   Email: String,
+//   Password: String,
+//   Gender: String,
+//   UniqueId: String,
+//   Role: String
+// });
 
-async function findacc(name){
-  let User = await acc_create.findOne({ Firstname:name }).exec();
+// async function findacc(name){
+//   let User = await acc_create.findOne({ Firstname:name }).exec();
 
-  let ans = 0;
-  // console.log(User.Password);
-  if(User){
-      return User.UniqueId;
-  }
-  else
-  return ans;
-}
+//   let ans = 0;
+//   // console.log(User.Password);
+//   if(User){
+//       return User.UniqueId;
+//   }
+//   else
+//   return ans;
+// }
 
 
 server.listen(process.env.Port, () => {
